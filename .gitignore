@@ -1,0 +1,10 @@
+*.idea/
+*COPYING
+*.class
+META-INF/
+*.zip
+*.jar
+edu/
+out/
+*.iml
+*.txt

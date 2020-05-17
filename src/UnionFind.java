@@ -1,0 +1,31 @@
+import java.util.Arrays;
+
+/**
+ * Created by qiuying on 2020/4/19.
+ */
+public class UnionFind {
+    private int[] id;
+
+    public UnionFind(int N) {
+        id = new int[N];
+        for (int i = 0; i < N; i++) {
+            id[i] = i;
+        }
+    }
+
+    public boolean connected(int p, int q) {
+        return id[p] == id[q];
+    }
+
+    public void union(int p, int q) {
+        int pid = id[p];
+        int qid = id[q];
+        for (int i = 0; i < id.length; i++)
+            if(id[i] == pid) id[i] = qid;
+
+    }
+
+    public void printId() {
+        System.out.println(Arrays.toString(id));
+    }
+}
