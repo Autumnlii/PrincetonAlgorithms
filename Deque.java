@@ -92,19 +92,47 @@ public class Deque<Item>  {//implements Iterable<Item> {
 
     // remove and return the item from the front
     public Item removeFirst() {
-        if(first == null && last == null) {
-            throw new IllegalArgumentException("Too poor to give");
-        }
-
-
-    }
-
-    // remove and return the item from the back
-    public Item removeLast() {
         if (first == null && last == null) {
             throw new IllegalArgumentException("Too poor to give");
         }
+        if (first != null && first == last) {
+            Node new_node = new Node();
+            new_node = first;
+            last = null;
+            first = last;
+        }
+        if (first != null && last != null && last != first) {
+            Node new_node = new Node();
+            new_node = first;
+            first = last;
+
+        }
         size--;
+        return last.item;
+    }
+
+
+
+
+
+    // remove and return the item from the back
+    public Item removeLast() {
+         size--;
+        if (first == null && last == null) {
+            throw new IllegalArgumentException("Too poor to give");
+        }
+        if(first != null && first == last) {
+            Node new_node = new Node();
+            new_node = last;
+            first = null;
+            last = first;
+        }
+        if(first != null && last != null && first!= last){
+            Node new_node = new Node();
+            new_node = last;
+            last = first;
+        }
+        return last.item;
     }
 
     // return an iterator over items in order from front to back
